@@ -9,6 +9,9 @@ debug = 0   ## Debug to print the output
 total = len(sys.argv)
 cmdargs = str(sys.argv)
 
+
+assert total == 2, "Mosk does not currently support multiple topics, and was expecting a syntax like mosk 'test/topic'"
+
 if debug == 1 : 
    print ("The total numbers of args passed to the script: %d " % total)
    print ("Args list: %s " % cmdargs)
@@ -18,10 +21,15 @@ if debug == 1 :
 
 topic = str(sys.argv[1])
 
+
+if (topic == "-a") : 
+   topic = "\\#"
+
+
 if debug == 1 : 
    print "The selected topic is " , topic
 
-cmd = "mosquitto_sub -h 192.168.1.100 -v -t " + topic + " | ts" 
+cmd = "mosquitto_sub -h 192.168.1.104 -v -t " + topic + " | ts" 
 print "The command which was executed is : " , cmd
 
 def run_command(command):

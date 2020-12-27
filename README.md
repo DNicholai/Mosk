@@ -8,3 +8,6 @@ Requires :
 
 Syntax is as follows : 
 mosk Temp/+
+
+Or alternatively : 
+mosk -a
